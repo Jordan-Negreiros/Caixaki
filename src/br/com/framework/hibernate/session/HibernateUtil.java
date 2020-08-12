@@ -30,4 +30,12 @@ public class HibernateUtil implements Serializable {
             throw new ExceptionInInitializerError("Erro ao criar conexão Session Factory");
         }
     }
+
+    /**
+     * Retorna o Session Factory corrente
+     * @return sessionFactory
+     */
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }
