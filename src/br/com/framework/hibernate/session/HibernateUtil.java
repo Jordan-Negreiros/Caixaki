@@ -1,10 +1,13 @@
 package br.com.framework.hibernate.session;
 
+import br.com.framework.implementacao.crud.VariavelConexaoUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;
 
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -69,5 +72,15 @@ public class HibernateUtil implements Serializable {
      */
     public static Connection getConnectionProvider() throws SQLException {
         return ((SessionFactoryImplementor) sessionFactory).getConnectionProvider().getConnection();
+    }
+
+    /**
+     * Obtem o objeto Connection no InitialContext
+     * @return Connection no InitialContext java:/comp/env/jdbc/datasource
+     */
+    public static Connection getConnection() throws Exception {
+        InitialContext context = new InitialContext();
+        DataSource dataSource = (DataSource) context.lookup(VariavelConexaoUtil.JAVA_COMP_ENV_JDBC_DATA_SOURCE);
+        return dataSource.getConnection();
     }
 }
