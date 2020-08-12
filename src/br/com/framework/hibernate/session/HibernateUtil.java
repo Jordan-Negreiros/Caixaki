@@ -3,8 +3,11 @@ package br.com.framework.hibernate.session;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.engine.SessionFactoryImplementor;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Responsavel por estabelecer a conexão com hibernate
@@ -58,5 +61,13 @@ public class HibernateUtil implements Serializable {
         }
 
         return sessionFactory.openSession();
+    }
+
+    /**
+     * Obtem a Connetion do provedor de conexoes configurado
+     * @return Connection SQL
+     */
+    public static Connection getConnectionProvider() throws SQLException {
+        return ((SessionFactoryImplementor) sessionFactory).getConnectionProvider().getConnection();
     }
 }
