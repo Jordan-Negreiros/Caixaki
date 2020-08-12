@@ -1,5 +1,6 @@
 package br.com.framework.hibernate.session;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -37,5 +38,13 @@ public class HibernateUtil implements Serializable {
      */
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+
+    /**
+     * Retorna a sessão do Session Factory
+     * @return Session
+     */
+    public static Session getCurrentSession() {
+        return getSessionFactory().getCurrentSession();
     }
 }
