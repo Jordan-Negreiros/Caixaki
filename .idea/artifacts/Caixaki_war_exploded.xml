@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Caixaki:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Caixaki_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Caixaki/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Caixaki" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
