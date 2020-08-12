@@ -47,4 +47,16 @@ public class HibernateUtil implements Serializable {
     public static Session getCurrentSession() {
         return getSessionFactory().getCurrentSession();
     }
+
+    /**
+     * Abre uma nova sessão no Session Factory
+     * @return Session
+     */
+    public static Session openSession() {
+        if (sessionFactory == null) {
+            buildSessionFactory();
+        }
+
+        return sessionFactory.openSession();
+    }
 }
