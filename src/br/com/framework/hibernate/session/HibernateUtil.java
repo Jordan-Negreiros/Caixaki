@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;
 
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -82,5 +83,14 @@ public class HibernateUtil implements Serializable {
         InitialContext context = new InitialContext();
         DataSource dataSource = (DataSource) context.lookup(VariavelConexaoUtil.JAVA_COMP_ENV_JDBC_DATA_SOURCE);
         return dataSource.getConnection();
+    }
+
+    /**
+     * Obtem o Datasource JNDI do Tomcat
+     * @return DataSource JNDI Tomcat
+     */
+    public DataSource getDataSourceJndi() throws NamingException {
+        InitialContext context = new InitialContext();
+        return (DataSource) context.lookup(VariavelConexaoUtil.JAVA_COMP_ENV_JDBC_DATA_SOURCE);
     }
 }
