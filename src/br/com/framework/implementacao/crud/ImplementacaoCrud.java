@@ -57,7 +57,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public void update(T obj) throws Exception {
-
+        validSessionFactory();
+        sessionFactory.getCurrentSession().update(obj);
+        executeFlushSession();
     }
 
     @Override
