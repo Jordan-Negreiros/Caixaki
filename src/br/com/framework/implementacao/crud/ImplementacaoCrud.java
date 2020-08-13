@@ -43,7 +43,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public void persist(T obj) throws Exception {
-
+        validSessionFactory();
+        sessionFactory.getCurrentSession().persist(obj);
+        executeFlushSession();
     }
 
     @Override
