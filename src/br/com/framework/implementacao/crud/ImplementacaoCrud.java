@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 @Component
 @Transactional
 public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
@@ -71,7 +72,10 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public T merge(T obj) throws Exception {
-        return null;
+        validSessionFactory();
+        obj = (T) sessionFactory.getCurrentSession().merge(obj);
+        executeFlushSession();
+        return obj;
     }
 
     @Override
