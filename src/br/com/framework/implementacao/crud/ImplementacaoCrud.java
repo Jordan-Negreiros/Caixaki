@@ -158,4 +158,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     private void commitAjaxProcess() {
         sessionFactory.getCurrentSession().beginTransaction().commit();
     }
+
+    private void rollbackAjaxProcess() {
+        sessionFactory.getCurrentSession().beginTransaction().rollback();
+    }
 }
