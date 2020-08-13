@@ -88,7 +88,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public Object findById(Class<T> entidade, Long id) throws Exception {
-        return null;
+        validSessionFactory();
+        return sessionFactory.getCurrentSession().load(getClass(), id);
     }
 
     @Override
