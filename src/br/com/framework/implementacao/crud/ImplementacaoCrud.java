@@ -36,7 +36,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public void save(T obj) throws Exception {
-
+        validSessionFactory();
+        sessionFactory.getCurrentSession().save(obj);
+        executeFlushSession();
     }
 
     @Override
@@ -168,5 +170,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     private void rollbackAjaxProcess() {
         sessionFactory.getCurrentSession().beginTransaction().rollback();
+    }
+
+    /**
+     * Roda instantaneamente o SQL no banco de dados
+     */
+    private void executeFlushSession() {
+        sessionFactory.getCurrentSession().flush();
     }
 }
