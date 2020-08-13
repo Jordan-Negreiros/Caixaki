@@ -50,7 +50,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public void saveOrUpdate(T obj) throws Exception {
-
+        validSessionFactory();
+        sessionFactory.getCurrentSession().saveOrUpdate(obj);
+        executeFlushSession();
     }
 
     @Override
