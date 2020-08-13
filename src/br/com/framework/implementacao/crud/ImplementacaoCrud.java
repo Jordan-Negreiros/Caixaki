@@ -64,7 +64,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public void delete(T obj) throws Exception {
-
+        validSessionFactory();
+        sessionFactory.getCurrentSession().delete(obj);
+        executeFlushSession();
     }
 
     @Override
