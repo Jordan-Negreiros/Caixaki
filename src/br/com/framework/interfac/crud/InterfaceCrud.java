@@ -3,6 +3,7 @@ package br.com.framework.interfac.crud;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -71,6 +72,9 @@ public interface InterfaceCrud<T> extends Serializable {
 
     // metodos para trabalhar com jdbc do Spring
     SimpleJdbcInsert getSimpleJdbcInsert();
+
+    // metodos para trabalhar com jdbc do Spring
+    SimpleJdbcCall getSimpleJdbcClass();
 
     // retorna o total de registro de uma tabela
     Long totalRegistros(String table) throws Exception;
