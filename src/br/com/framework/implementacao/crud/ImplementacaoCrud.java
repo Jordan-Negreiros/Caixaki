@@ -154,4 +154,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
             sessionFactory.getCurrentSession().beginTransaction();
         }
     }
+
+    private void commitAjaxProcess() {
+        sessionFactory.getCurrentSession().beginTransaction().commit();
+    }
 }
