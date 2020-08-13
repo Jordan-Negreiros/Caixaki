@@ -20,7 +20,7 @@ import java.util.List;
 public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     private static final long serialVersionUID = 1L;
 
-    private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     @Autowired
     private JdbcTemplateImpl jdbcTemplate;
@@ -147,6 +147,13 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     @Override
     public List<T> findListByDynamicQuery(String query, int initialRegistration, int maxResult) throws Exception {
         return null;
+    }
+
+    private void validSessionFactory() {
+        if (sessionFactory == null) {
+            sessionFactory = HibernateUtil.getSessionFactory();
+        }
+        validTransaction();
     }
 
     private void validTransaction() {
