@@ -79,8 +79,11 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     }
 
     @Override
-    public List<T> findList(Class<T> objs) throws Exception {
-        return null;
+    public List<T> findList(Class<T> entity) throws Exception {
+        validSessionFactory();
+        String query = "select distinct(entity) from " + entity.getSimpleName() + " entity ";
+
+        return (List<T>) sessionFactory.getCurrentSession().createQuery(query).list();
     }
 
     @Override
