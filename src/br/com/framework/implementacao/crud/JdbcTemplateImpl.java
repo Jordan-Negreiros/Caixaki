@@ -16,4 +16,5 @@ public class JdbcTemplateImpl extends JdbcTemplate implements Serializable {
     public JdbcTemplateImpl(DataSource dataSource) {
         super(dataSource);
     }
+
 }

@@ -3,7 +3,9 @@ package br.com.framework.implementacao.crud;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,18 @@ import java.util.List;
 @Transactional
 public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     private static final long serialVersionUID = 1L;
+
+    @Autowired
+    private JdbcTemplateImpl jdbcTemplate;
+
+    @Autowired
+    private SimpleJdbcTemplateImpl simpleJdbcTemplate;
+
+    @Autowired
+    private SimpleJdbcInsertImpl simpleJdbcInsert;
+
+    @Autowired
+    private SimpleJdbcClassImpl simpleJdbcClass;
 
     @Override
     public void save(T obj) throws Exception {
@@ -98,17 +112,22 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public JdbcTemplate getJdbcTemplate() {
-        return null;
+        return jdbcTemplate;
     }
 
     @Override
     public SimpleJdbcTemplate getSimpleJdbcTemplate() {
-        return null;
+        return simpleJdbcTemplate;
     }
 
     @Override
     public SimpleJdbcInsert getSimpleJdbcInsert() {
-        return null;
+        return simpleJdbcInsert;
+    }
+
+    @Override
+    public SimpleJdbcCall getSimpleJdbcClass() {
+        return simpleJdbcClass;
     }
 
     @Override
@@ -125,4 +144,6 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     public List<T> findListByDynamicQuery(String query, int initialRegistration, int maxResult) throws Exception {
         return null;
     }
+
+
 }
