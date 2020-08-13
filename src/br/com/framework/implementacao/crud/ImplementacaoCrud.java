@@ -1,8 +1,10 @@
 package br.com.framework.implementacao.crud;
 
+import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
@@ -17,6 +19,8 @@ import java.util.List;
 @Transactional
 public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
     private static final long serialVersionUID = 1L;
+
+    private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     @Autowired
     private JdbcTemplateImpl jdbcTemplate;
@@ -145,5 +149,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
         return null;
     }
 
-
+    private void validTransaction() {
+        if (!sessionFactory.getCurrentSession().getTransaction().isActive()) {
+            sessionFactory.getCurrentSession().beginTransaction();
+        }
+    }
 }
