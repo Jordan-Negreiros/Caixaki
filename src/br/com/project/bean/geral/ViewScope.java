@@ -16,7 +16,7 @@ import java.util.Map;
 public class ViewScope implements Scope, Serializable {
     private static final long serialVersionUID = 1L;
 
-    private static final String VIEW_SCOPE_CALLBACKS = "viewScope.callBacks";
+    public static final String VIEW_SCOPE_CALLBACKS = "viewScope.callBacks";
 
     @Override
     public Object get(String name, ObjectFactory<?> objectFactory) {
