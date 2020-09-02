@@ -19,7 +19,7 @@
             minEvictableIdleTimeMillis="60000"
             antiJARLocking="false"
             antiResourceLocking="false"
-            username="caixaki"
+            username="postgres"
             password="admin"
             url="jdbc:postgresql://localhost:5432/caixaki?autoReconect=true" />
     <!-- Classe do tomcat que está lendo esse arquivo org.apache.tomcat.dbcp.dbcp.PoolingDataSource -->

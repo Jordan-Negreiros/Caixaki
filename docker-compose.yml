@@ -4,6 +4,7 @@ services:
   teste-postgres-compose:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: "taskboard"
+      POSTGRES_USERNAME: "caixaki"
+      POSTGRES_PASSWORD: "admin"
     ports:
       - "5432:5432"
