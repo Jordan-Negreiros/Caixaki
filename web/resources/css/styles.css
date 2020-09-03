@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: arial, helvetic, sans-serif;
+
+}
+
+/* Página de Login */
+#imagemlogin {
+    position: absolute;
+    top: 30px;
+    right: 60px;
+}
+
+#keyslogin {
+    position: absolute;
+    bottom: 35px;
+    right: 240px;
+    z-index: 999;
+}
+
+#formlogin {
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+    left: 0;
+    background-color: #e5e5e5;
+    display: block;
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+/* classes */
+.bordaImagem {
+    border: 0;
+}
+
+.estiloSpan {
+    COLOR: red;
+    font-size: 14px;
+}
+
+input[type=submit] {
+    margin: 1px 2px 1px 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
