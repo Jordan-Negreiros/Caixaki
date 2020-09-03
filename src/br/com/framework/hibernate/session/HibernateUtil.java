@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 /**
  * Responsavel por estabelecer a conexão com hibernate
  */
+@ApplicationScoped
 public class HibernateUtil implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +31,7 @@ public class HibernateUtil implements Serializable {
 
         try {
             if (sessionFactory == null) {
-                sessionFactory = new Configuration().configure().buildSessionFactory();
+                sessionFactory = (new Configuration()).configure().buildSessionFactory();
             }
 
             return sessionFactory;

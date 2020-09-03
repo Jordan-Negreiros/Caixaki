@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class UtilFramework {
     private static final long serialVersionUID = 1L;
 
-    private static final ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Long> threadLocal = new ThreadLocal<Long>();
 
     public synchronized static ThreadLocal<Long> getThreadLocal() {
         return threadLocal;

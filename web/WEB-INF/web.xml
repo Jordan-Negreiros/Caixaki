@@ -145,11 +145,11 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </filter-mapping>
-    
+
     <listener>
         <listener-class>br.com.project.listener.ContextLoaderListenerCaixakiUtils</listener-class>
     </listener>
-    
+
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>

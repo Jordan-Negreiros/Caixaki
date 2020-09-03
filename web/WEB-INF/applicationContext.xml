@@ -35,7 +35,10 @@
 
     <!-- Data Source -->
     <bean id="springDataSource" name="springDataSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="false">
-        <property name="jndiName" value="java:comp/env/jdbc/datasouce"/>
+        <property name="jndiName">
+            <value>java:comp/env/jdbc/datasource</value>
+        </property>
+
     </bean>
 
     <!-- Configurações do flyway -->
@@ -86,7 +89,7 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver" lazy-init="false">
         <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WebContent/" />
+        <property name="prefix" value="/web/" />
         <property name="suffix" value="*.jsf, *.xhtml, *.html, *.jsp, *.js" />
 
     </bean>

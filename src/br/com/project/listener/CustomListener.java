@@ -15,8 +15,8 @@ public class CustomListener implements RevisionListener, Serializable {
     @Override
     public void newRevision(Object revisionEntity) {
         InformacaoRevisao informacaoRevisao = (InformacaoRevisao) revisionEntity;
-        Long codUser = UtilFramework.getThreadLocal().get();
 
+        Long codUser = UtilFramework.getThreadLocal().get();
         Entidade entidade = new Entidade();
 
         if (codUser != null && codUser != 0L) {

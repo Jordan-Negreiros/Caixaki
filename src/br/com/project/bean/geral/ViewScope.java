@@ -16,10 +16,10 @@ import java.util.Map;
 public class ViewScope implements Scope, Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String VIEW_SCOPE_CALLBACKS = "viewScope.callBacks";
+    public static final String VIEW_SCOPE_CALLBACKS = "viewScope.callbacks";
 
     @Override
-    public Object get(String name, ObjectFactory<?> objectFactory) {
+    public synchronized Object get(String name, ObjectFactory<?> objectFactory) {
         Object instance = getViewMap().get(name);
         if (instance == null) {
             instance = objectFactory.getObject();
@@ -44,7 +44,7 @@ public class ViewScope implements Scope, Serializable {
     public void registerDestructionCallback(String name, Runnable runnable) {
         Map<String, Runnable> callbacks = (Map<String, Runnable>) getViewMap().get(VIEW_SCOPE_CALLBACKS);
         if (callbacks != null) {
-            callbacks.put(VIEW_SCOPE_CALLBACKS, runnable);
+            callbacks.put(name, runnable);
         }
     }
 
@@ -69,6 +69,6 @@ public class ViewScope implements Scope, Serializable {
      */
     private Map<String, Object> getViewMap() {
         return FacesContext.getCurrentInstance() != null ?
-                FacesContext.getCurrentInstance().getViewRoot().getViewMap() : new HashMap<>();
+                FacesContext.getCurrentInstance().getViewRoot().getViewMap() : new HashMap<String, Object>();
     }
 }
