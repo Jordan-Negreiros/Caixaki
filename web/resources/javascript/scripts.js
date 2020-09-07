@@ -1,3 +1,14 @@
+// invalida a sessão do spring security
+function logout(contextPath) {
+    document.location =	 contextPath + '/j_spring_security_logout';
+    let post = 'invalidate_session';
+    $.ajax(
+        {
+            type: "POST",
+            url: post
+        });
+}
+
 function invalidateSession(context, pagina) {
     document.location = (context + pagina + '.jsf');
 }
