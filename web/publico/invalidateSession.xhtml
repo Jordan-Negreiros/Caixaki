@@ -36,15 +36,16 @@
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputLabel for="username" value="Login:" />
                 <p:inputText id="username"
-                             required="true" label="username" requiredMessage="Informe o login." />
+                             required="true" label="username" requiredMessage="Informe o login." value="#{loginBeanView.username}"/>
 
                 <h:outputLabel for="password" value="Senha:" />
                 <p:password id="password"
-                            required="true" label="password" requiredMessage="Informe a senha."/>
+                            required="true" label="password" requiredMessage="Informe a senha." value="#{loginBeanView.password}"/>
 
                 <f:facet name="footer">
                     <p:commandButton value="Encerrar"
                                      style="height:40px; width:100px; background:#CDCDC1; border: 1px solid #FFFFFF;"
+                                     actionListener="#{loginBeanView.invalidate}"
                                      update="form:msg"
                                      oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"  />
                 </f:facet>
@@ -58,6 +59,7 @@
         });
 
         function handleLoginRequest(xhr, status, args) {
+
             if(!args.loggedIn) {
                 PF('dlg').jq.effect("shake", {times:5}, 100);
             }
