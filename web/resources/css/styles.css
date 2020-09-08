@@ -48,6 +48,41 @@
     font-size: 14px;
 }
 
+#topo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #F7F6F5;
+}
+
+#dadosLogin {
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, .3),
+    rgba(255, 255, 255, 0) );
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, .3),
+    rgba(255, 255, 255, 0) );
+    background-image: -o-linear-gradient(rgba(255, 255, 255, .3),
+    rgba(255, 255, 255, 0) );
+    background-image: -ms-linear-gradient(rgba(255, 255, 255, .3),
+    rgba(255, 255, 255, 0) );
+    background-image: linear-gradient(rgba(255, 255, 255, .3),
+    rgba(255, 255, 255, 0) );
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    width: 200px;
+    padding: 4px;
+    background-color: #61c0e0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
+}
+
+
 .espacoBranco {
     height: 10px;
 }

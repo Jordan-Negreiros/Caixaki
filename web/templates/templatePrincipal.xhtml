@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags"
+      xmlns:p="http://primefaces.org/ui">
+
+<sec:isAuthenticated> <!-- somente se estiver logado -->
+
+    <h:head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="titulo">Caixaki</ui:insert></title>
+        <h:outputScript name="primefaces.js" library="primefaces" id="jsPrime" />
+        <h:outputScript name="jquery.js" library="primefaces/jquery" id="jsJquery" />
+        <h:outputScript name="jquery-plugins.js" library="primefaces/jquery" id="jsJqueryPlugin" />
+        <h:outputScript name="jquery.cookie.js" library="javascript" id="jsJaqueryCookie" />
+        <h:outputStylesheet name="jquery-ui.css" library="primefaces/jquery/ui" id="jsJqueryUi" />
+        <h:outputStylesheet name="primefaces.css" library="primefaces" id="jdPrimeCss" />
+        <h:outputScript name="jquery.maskMoney.min.js" library="javascript" id="jsMaskMoneySistema" />
+        <h:outputScript name="jquery.maskedinput.js" library="javascript" id="jsMaskInputSistema" />
+        <h:outputScript name="scripts.js" library="javascript" id="jsScriptSistema" />
+        <h:outputStylesheet name="styles.css" library="css" id="cssStiloSistema"/>
+    </h:head>
+
+    <h:form id="formTemplate" prependId="false">
+
+        <h:body>
+            <script type="text/javascript">
+                $.noConflict();
+
+                /* Bloqueia F5 */
+                $(document).keydown(function (e) {
+                    if (e.which === 116) {
+                        return 116;
+                    }
+                });
+            </script>
+
+            <ui:include src="barraProgresso.xhtml" />
+
+            <div id="msgError" class="espacoBranco">
+                <p:growl id="msg" showDetail="false" sticky="false" redisplay="true" autoUpdate="true" life="500" />
+                <p:tooltip id="tooltipFocus" globalSelector="a,:input, :button" showEvent="focus" hideEvent="blur"/>
+            </div>
+
+            <div id="container">
+                <div id="topo">
+                    <span style="position: absolute; left: 20px; top: 14px;" id="spanLogo">
+                        <h:graphicImage library="img" name="logo.png" id="logoImg" styleClass="bordaImagem"/>
+                    </span>
+                    <span id="dadosLogin">
+                        Usuário: #{entidadeBeanView.usuarioLogadoSecurity}
+                        <br id="quebraUser"/>
+                        Último Login:
+                        <h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
+                            <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
+                                               dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
+						</h:outputLabel>
+                    </span>
+                </div>
+            </div>
+
+        </h:body>
+
+    </h:form>
+
+</sec:isAuthenticated>
+</html>
