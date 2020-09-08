@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -8,12 +6,12 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title><ui:insert name="titulo">Caixaki</ui:insert></title>
 
-    <h:outputStylesheet name="styles.css" library="css"/>
-    <h:outputScript name="jquery.js" library="primefaces/jquery"/>
-    <h:outputScript name="scripts.js" library="javascript"/>
+    <h:outputStylesheet name="styles.css" library="css" id="cssStiloSistema"/>
+    <h:outputScript name="/jquery/jquery.js" library="primefaces"/>
+    <h:outputScript name="scripts.js" library="javascript" id="jsScriptSistema" />
 </h:head>
 
 <h:body>
@@ -41,7 +39,7 @@
                 </span>
                 <h:commandButton value="Encerrar"
                                  style="height: 40px; width: 100px; background: #CDCDC1; border: 1px"
-                                 onclick="invalidateSession('#{request.contextPath}', '/publico/invalidadeSession');" />
+                                 onclick="invalidateSession('#{request.contextPath}', '/publico/invalidateSession');" />
             </h:outputLabel>
 
         </h:panelGroup>
