@@ -35,3 +35,16 @@ function validateSenhaLogin() {
 
     return true;
 }
+
+/* Menu aberto ao clicar na seta ao lado do botão de sair */
+function abrirMenuPop() {
+    $("#menuPop").show('slow').mouseleave(function () {
+       fecharMenuPop();
+    });
+}
+
+function fecharMenuPop() {
+    if ($("#menuPop").is(":visible")) {
+        $("#menuPop").hide("slow")
+    }
+}

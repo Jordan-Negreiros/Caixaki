@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -9,17 +10,17 @@
 <sec:isAuthenticated> <!-- somente se estiver logado -->
 
     <h:head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         <title><ui:insert name="titulo">Caixaki</ui:insert></title>
-        <h:outputScript name="primefaces.js" library="primefaces" id="jsPrime" />
-        <h:outputScript name="jquery.js" library="primefaces/jquery" id="jsJquery" />
-        <h:outputScript name="jquery-plugins.js" library="primefaces/jquery" id="jsJqueryPlugin" />
-        <h:outputScript name="jquery.cookie.js" library="javascript" id="jsJaqueryCookie" />
-        <h:outputStylesheet name="jquery-ui.css" library="primefaces/jquery/ui" id="jsJqueryUi" />
-        <h:outputStylesheet name="primefaces.css" library="primefaces" id="jdPrimeCss" />
-        <h:outputScript name="jquery.maskMoney.min.js" library="javascript" id="jsMaskMoneySistema" />
-        <h:outputScript name="jquery.maskedinput.js" library="javascript" id="jsMaskInputSistema" />
-        <h:outputScript name="scripts.js" library="javascript" id="jsScriptSistema" />
+        <h:outputScript name="primefaces.js" library="primefaces" id="jsPrime"/>
+        <h:outputScript name="jquery.js" library="primefaces/jquery" id="jsJquery"/>
+        <h:outputScript name="jquery-plugins.js" library="primefaces/jquery" id="jsJqueryPlugin"/>
+        <h:outputScript name="jquery.cookie.js" library="javascript" id="jsJaqueryCookie"/>
+        <h:outputStylesheet name="jquery-ui.css" library="primefaces/jquery/ui" id="jsJqueryUi"/>
+        <h:outputStylesheet name="primefaces.css" library="primefaces" id="jdPrimeCss"/>
+        <h:outputScript name="jquery.maskMoney.min.js" library="javascript" id="jsMaskMoneySistema"/>
+        <h:outputScript name="jquery.maskedinput.js" library="javascript" id="jsMaskInputSistema"/>
+        <h:outputScript name="scripts.js" library="javascript" id="jsScriptSistema"/>
         <h:outputStylesheet name="styles.css" library="css" id="cssStiloSistema"/>
     </h:head>
 
@@ -37,10 +38,10 @@
                 });
             </script>
 
-            <ui:include src="barraProgresso.xhtml" />
+            <ui:include src="barraProgresso.xhtml"/>
 
             <div id="msgError" class="espacoBranco">
-                <p:growl id="msg" showDetail="false" sticky="false" redisplay="true" autoUpdate="true" life="500" />
+                <p:growl id="msg" showDetail="false" sticky="false" redisplay="true" autoUpdate="true" life="500"/>
                 <p:tooltip id="tooltipFocus" globalSelector="a,:input, :button" showEvent="focus" hideEvent="blur"/>
             </div>
 
@@ -57,11 +58,35 @@
                             <f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
                                                dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
 						</h:outputLabel>
-                        <br id="quebraUltimoAcesso" />
-                        <a href="#" id="logoutSuperior" onclick="logout('#{request.contextPath}')" >Sair</a>
+                        <br id="quebraUltimoAcesso"/>
+                        <a href="#" id="logoutSuperior" onclick="logout('#{request.contextPath}')">Sair</a>
+                    </span>
+                    <span id="menuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px">
+                        <a href="#" onclick="abrirMenuPop()">
+                            <h:graphicImage library="img" name="setabaixo.png" styleClass="bordaImagem"
+                                            id="imgSetaBaixo"/>
+                        </a>
                     </span>
                 </div>
+
+                <div id="menu">
+                    <span id="iniciarMenu">
+                        <h:graphicImage library="img" name="iconemenu.png" styleClass="bordaImagem" id="iconeMenu">
+                            &nbsp;&nbsp;Menu
+                        </h:graphicImage>
+                    </span>
+                </div>
+
+
+                <div id="menuPop">
+
+                </div>
+
             </div>
+
+            <script type="text/javascript">
+                $("#menuPop").hide();
+            </script>
 
         </h:body>
 
