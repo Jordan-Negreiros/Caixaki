@@ -29,6 +29,9 @@
         <h:body>
             <script type="text/javascript">
                 $.noConflict();
+                localeData_pt_br();
+                initTamplete();
+                ocultarMenu();
 
                 /* Bloqueia F5 */
                 $(document).keydown(function (e) {
@@ -46,7 +49,12 @@
             </div>
 
             <div id="container">
+
+                <!-- Topo da Página -->
+
                 <div id="topo">
+
+                    <!-- Mostra usuário logado e último acesso -->
                     <span style="position: absolute; left: 20px; top: 14px;" id="spanLogo">
                         <h:graphicImage library="img" name="logo.png" id="logoImg" styleClass="bordaImagem"/>
                     </span>
@@ -61,6 +69,9 @@
                         <br id="quebraUltimoAcesso"/>
                         <a href="#" id="logoutSuperior" onclick="logout('#{request.contextPath}')">Sair</a>
                     </span>
+
+                    <!-- imagem e acesso ao menu pop -->
+
                     <span id="menuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px">
                         <a href="#" onclick="abrirMenuPop()">
                             <h:graphicImage library="img" name="setabaixo.png" styleClass="bordaImagem"
@@ -68,6 +79,8 @@
                         </a>
                     </span>
                 </div>
+
+                <!-- imagem e botão menu lateral -->
 
                 <div id="menu">
                     <span id="iniciarMenu">
@@ -77,12 +90,60 @@
                     </span>
                 </div>
 
+                <div id="corpo" class="corpo">
+                    <ui:insert name="corpo" />
+                </div>
+
+                <!-- Menu Pop -->
 
                 <div id="menuPop">
 
+                    <sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
+                        <p:commandLink actionListener="#{mensagemBeanView.novo}" value="Enviar Mensagem"
+                                       immediate="true" style="display: block" id="enviarMensagem" ajax="true" process="@this"
+                                       onsuccess="enviarMsgDialog.show()">
+
+                            <p:ajax immediate="true" listener="#{mensagemBeanView.novo}" />
+
+                        </p:commandLink>
+                    </sec:ifAnyGranted>
+
+                    <a href="#" onclick="alterarSenhaDialog.show();" style="display: block" id="alterarSenha">
+                        <span style="display: block;" id="spanAlterarSenha">
+                            Alterar Senha
+                        </span>
+                    </a>
+
+                </div>
+
+                <!-- Menu Lateral -->
+
+                <div id="barraMenu">
+                    <p:tieredMenu id="menuEsquerdo"
+                                  style="width: 185px; border: none; background: none; color: #000;">
+
+                        <!-- Itens do Menu -->
+
+                        <p:menuitem value="Inicio" id="menuInicio" ajax="true" onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');" />
+
+                        <p:menuitem value="Sair" id="menuSair" ajax="true" onclick="logout('#{request.contextPath}');"/>
+
+                    </p:tieredMenu>
                 </div>
 
             </div>
+
+            <!-- Dialog do Primefaces -->
+
+            <p:dialog widgetVar="enviarMsgDialog" id="enviarMsgDialog" width="800px" height="360px"
+                      modal="true" resizable="false" dynamic="true" appendToBody="false" header="Enviar Mensagem">
+                Corpo
+            </p:dialog>
+
+            <p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="240px" height="170px"
+                      modal="true" resizable="false" dynamic="true" appendToBody="false" header="Alterar Senha">
+                Corpo
+            </p:dialog>
 
             <script type="text/javascript">
                 $("#menuPop").hide();
@@ -91,6 +152,8 @@
         </h:body>
 
     </h:form>
-
+    <script type="text/javascript">
+        carregarIdElementosPagina();
+    </script>
 </sec:isAuthenticated>
 </html>
