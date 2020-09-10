@@ -43,6 +43,15 @@
     border: 0;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:focus {
+    outline: none;
+}
+
 .estiloSpan {
     COLOR: red;
     font-size: 14px;

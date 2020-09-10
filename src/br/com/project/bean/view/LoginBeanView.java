@@ -31,8 +31,11 @@ public class LoginBeanView extends BeanManagedViewAbstract {
     @Autowired
     private SrvLogin srvLogin;
 
+    /**
+     * Invalida sessão do spring security
+     */
     @RequestMapping(value = "**/invalidate_session", method = RequestMethod.POST)
-    public void invalidateSessionContrala(HttpServletRequest httpServletRequest) throws Exception {
+    public void invalidateSessionController(HttpServletRequest httpServletRequest) throws Exception {
 
         String userLogadoSessao = null;
 
