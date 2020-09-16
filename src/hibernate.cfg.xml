@@ -23,6 +23,9 @@
         <property name="hibernate.connection.pool_size">50</property>
 
         <mapping class="br.com.project.model.classes.Entidade" />
+        <mapping class="br.com.project.model.classes.Pais" />
+        <mapping class="br.com.project.model.classes.Estado" />
+        <mapping class="br.com.project.model.classes.Cidade" />
 
         <listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/>
         <listener class="org.hibernate.envers.event.AuditEventListener" type="post-update"/>
