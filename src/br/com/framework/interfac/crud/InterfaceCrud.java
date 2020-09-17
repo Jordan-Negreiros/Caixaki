@@ -84,4 +84,6 @@ public interface InterfaceCrud<T> extends Serializable {
 
     // retorna lista generica de dados por demanda
     List<T> findListByDynamicQuery(String query, int initialRegistration, int maxResult) throws Exception;
+
+    public List<T> findListOrderByProperty(Class<T> entidade, String propriedade) throws Exception;
 }

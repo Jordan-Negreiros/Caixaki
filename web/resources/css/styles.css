@@ -176,3 +176,11 @@ input[type=submit] {
     position: absolute;
     padding: 8px;
 }
+
+.idCadastro {
+    width: 115px;
+}
+
+.inputName {
+    width: 500px;
+}

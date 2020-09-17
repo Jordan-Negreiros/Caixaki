@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
@@ -99,7 +100,23 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public List<T> findListByDynamicQuery(String query) throws Exception {
-        return null;
+        validSessionFactory();
+        List<T> lista = new ArrayList<T>();
+        lista = sessionFactory.getCurrentSession()
+                .createQuery(query.toString()).list();
+        return lista;
+    }
+
+    @Override
+    public List<T> findListOrderByProperty(Class<T> entidade, String propriedade) throws Exception{
+        validSessionFactory();
+        StringBuilder query = new StringBuilder();
+        query.append("select entity from ").append(entidade.getSimpleName())
+                .append(" entity ").append(" order by entity.")
+                .append(propriedade);
+        List<T> lista = sessionFactory.getCurrentSession()
+                .createQuery(query.toString()).list();
+        return lista;
     }
 
     @Override

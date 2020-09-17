@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templates/templatePrincipal.xhtml">
+        <ui:define name="corpo">
+            <h:form id="formCadastro" prependId="false">
+                <c:set var="isCadastro" value="true" scope="view" />
+
+                <p:panel header="Cadastro de Cidade" id="panelCadastro">
+                    <h:panelGrid id="gridCidade" columns="3">
+
+                        <!-- Campo ID -->
+                        <h:outputLabel for="id" value="Código:" id="labelId" />
+                        <p:inputText id="id" styleClass="idCadastro" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
+                        <h:outputLabel />
+
+                        <!-- Campo Nome -->
+                        <h:outputLabel  id="labelNomeConsultaCidade" for="cidadeNome" value="Nome * :"/>
+                        <p:inputText id="cidadeNome" styleClass="inputName" required="true" maxlength="100"
+                                     value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
+                                     requiredMessage="Informe o nome da cidade" />
+                        <p:message for="cidadeNome" />
+
+                        <!-- Combobox de Estados -->
+                        <p:selectOneMenu>
+                            <f:selectItems value="#{estadoBeanView.estados}" />
+                        </p:selectOneMenu>
+
+                        <p:commandButton value="Salvar" actionListener="#{cidadeBeanView.save}"/>
+
+                    </h:panelGrid>
+                </p:panel>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

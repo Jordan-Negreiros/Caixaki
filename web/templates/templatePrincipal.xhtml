@@ -124,6 +124,16 @@
 
                         <!-- Itens do Menu -->
 
+                        <sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
+                            <p:submenu label="Cadastros" id="subMenuCadastro">
+
+                                <sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
+                                    <p:menuitem value="Cidade" id="menuCidade" action="/cadastro/cad_cidade.jsf?faces-redirect=true"/>
+                                </sec:ifAnyGranted>
+
+                            </p:submenu>
+                        </sec:ifAnyGranted>
+
                         <p:menuitem value="Inicio" id="menuInicio" ajax="true" onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');" />
 
                         <p:menuitem value="Sair" id="menuSair" ajax="true" onclick="logout('#{request.contextPath}');"/>
