@@ -1,7 +1,6 @@
 package br.com.project.model.classes;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
-import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.ForeignKey;
@@ -41,7 +40,6 @@ public class Estado implements Serializable {
     @Basic
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pais")
-    @NotNull
     @ForeignKey(name = "pais_fk")
     private Pais pais = new Pais();
 

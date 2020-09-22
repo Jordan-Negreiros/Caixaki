@@ -25,6 +25,7 @@
     <orderEntry type="library" name="activation-1.0.2" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="annotations-api1" level="project" />
+    <orderEntry type="library" name="annotations-api" level="project" />
     <orderEntry type="library" name="postgresql-42.2.16" level="project" />
   </component>
 </module>
