@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags"
+      xmlns:comp="http://java.sun.com/jsf/composite">
+
+    <comp:interface name="botoesCrud">
+        <comp:attribute name="managedBeanView" required="true"/>
+        <comp:attribute name="botaoNovo" required="false" default="true" />
+        <comp:attribute name="botaoSalvar" required="false" default="true" />
+        <comp:attribute name="botaoAtualizar" required="false" default="true" />
+        <comp:attribute name="botaoExcluir" required="false" default="false" />
+        <comp:attribute name="camposReload" required="false" />
+    </comp:interface>
+
+    <comp:implementation>
+
+        <p:commandButton value="Novo" rendered="#{cc.attrs.botaoNovo}"
+                         action="#{cc.attrs.managedBeanView.novo}" ajax="false" immediate="true"
+                         id="botaoNovo" update="#{cc.attrs.camposReload}">
+        </p:commandButton>
+
+        <p:commandButton value="Salvar" rendered="#{cc.attrs.botaoSalvar}"
+                         actionListener="#{cc.attrs.managedBeanView.saveNotReturn}" ajax="false"
+                         partialSubmit="true" process="@this, @form" id="botaoSalvar"
+                         immediate="false" update="#{cc.attrs.camposReload}">
+
+        </p:commandButton>
+
+        <p:commandButton value="Atualizar" rendered="#{cc.attrs.botaoAtualizar}"
+                         actionListener="#{cc.attrs.managedBeanView.saveEdit}" ajax="false"
+                         partialSubmit="true" process="@this @form" id="botaoAtualizar"
+                         immediate="false" update="#{cc.attrs.camposReload}" >
+
+        </p:commandButton>
+
+        <p:commandButton value="Excluir" rendered="#{cc.attrs.botaoExcluir}" actionListener="#{cc.attrs.managedBeanView.excluir}"
+                         ajax="false" id="botaoExcluir" immediate="false" update="#{cc.attrs.camposReload}" >
+
+        </p:commandButton>
+
+    </comp:implementation>
+
+</html>

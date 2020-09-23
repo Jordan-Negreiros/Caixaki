@@ -136,12 +136,14 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
     @Override
     public void evict(Object obj) throws Exception {
-
+        validSessionFactory();
+        sessionFactory.getCurrentSession().evict(obj);
     }
 
     @Override
     public Session getSession() throws Exception {
-        return null;
+        validSessionFactory();
+        return sessionFactory.getCurrentSession();
     }
 
     @Override

@@ -49,7 +49,7 @@ public abstract class Messages extends FacesContext implements Serializable {
     }
 
     public static void sucesso () {
-        msgSeverityInfo(Constante.SECESSO);
+        msgSeverityInfo(Constante.OPERACAO_REALIZADA_COM_SUCESSO);
     }
 
     /**

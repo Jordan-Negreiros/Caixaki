@@ -125,6 +125,14 @@ function ocultarMenu() {
     });
 }
 
+/* Add foco ao elemento ao carregar a página */
+function addFocoAoCampo(campo) {
+    let id = getValorElementPorId(campo);
+    if (id != undefined) {
+        document.getElementById(id).focus();
+    }
+}
+
 /* Menu aberto ao clicar na seta ao lado do botão de sair */
 function abrirMenuPop() {
     $("#menuPop").show('slow').mouseleave(function () {
